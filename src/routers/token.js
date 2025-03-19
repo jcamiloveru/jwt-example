@@ -5,10 +5,10 @@ import createToken from "../controllers/createToken.js";
 const router = Router();
 
 // Route to generate a token
-router.post("/token/create", createToken);
+router.post("/create", createToken);
 
 // Verify the token
-router.get("/token/check", auth, (_, res) => {
+router.get("/check", auth, (_, res) => {
   res.status(200).json({ response: true });
 });
 
