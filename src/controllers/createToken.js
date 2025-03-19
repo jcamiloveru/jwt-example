@@ -1,6 +1,6 @@
 import { generateToken } from "../utils/jwt.js";
 
-const createToken = (req, res) => {
+const createToken = async (req, res) => {
   // Variables to use
   const userId = req.body.userId;
   const username = req.body.username;
@@ -12,7 +12,7 @@ const createToken = (req, res) => {
 
   try {
     // Generate the token
-    const token = generateToken({ username, userId });
+    const token = await generateToken({ username, userId });
 
     // Response with the token
     res.status(200).json({ token });
