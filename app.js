@@ -7,6 +7,8 @@ import router from "./src/routers/token.js";
 const app = express();
 const port = process.env.PORT || 4000;
 
+app.get("/", (_, res) => res.send("ok"));
+
 app.use(cors());
 app.use(express.json());
 app.use("/token", router);
