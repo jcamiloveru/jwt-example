@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
 dotenv.config();
+import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 
 const auth = async (req, res, next) => {
@@ -12,12 +12,15 @@ const auth = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.SECRET);
-    const { userId } = decoded;
+    if (decoded) {
+      const { userId } = decoded;
 
-    req.token = token;
-    req.userId = userId;
+      // save in the req token and userId
+      req.token = token;
+      req.userId = userId;
 
-    next();
+      next();
+    }
   } catch (error) {
     console.error(error.message);
     res.status(401).json({ error: "Token invalid" });

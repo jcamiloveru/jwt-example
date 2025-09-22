@@ -7,7 +7,7 @@ const createToken = async (req, res) => {
 
   // Check if the username and userId are provided
   if (!username || !userId) {
-    return res.status(400).json({ error: "Username and userId are required" });
+    return res.status(400).json({ error: "username and userId are required" });
   }
 
   try {
